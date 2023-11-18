@@ -1,6 +1,6 @@
 # Langchain_GPT
 
-This course teaches you how to build AI applications using [Langchain](https: //langchain.org/ ) and [OpenAI's API](https: //openai.com/api/ ) with [Next.js](https: //nextjs.org/ ).
+building AI applications using [Langchain](https: //langchain.org/ ) and [OpenAI's API](https: //openai.com/api/ ) with [Next.js](https: //nextjs.org/ ).
 
 ## Getting Started
 
