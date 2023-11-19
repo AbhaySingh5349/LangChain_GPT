@@ -1,6 +1,6 @@
-# Langchain Course
+# Langchain_GPT
 
-This course teaches you how to build AI applications using [Langchain](https: //langchain.org/ ) and [OpenAI's API](https: //openai.com/api/ ) with [Next.js](https: //nextjs.org/ ).
+building AI applications using [Langchain](https: //langchain.org/ ) and [OpenAI's API](https: //openai.com/api/ ) with [Next.js](https: //nextjs.org/ ).
 
 ## Getting Started
 
@@ -9,7 +9,7 @@ To get started, clone this repository and install the dependencies:
 Clone the repository
 
 ```
-git clone https://github.com/shawnesquivel/openai-javascript-course.git
+[git clone https://github.com/shawnesquivel/openai-javascript-course.git](https://github.com/AbhaySingh5349/LangChain_GPT.git)
 ```
 
 Navigate to folder
@@ -33,20 +33,6 @@ yarn dev
 ```
 
 Open [http: //localhost :3000](http: //localhost :3000) with your browser to see the app.
-
-## Course Outline
-
-This course covers the following topics:
-
-Introduciton to AI with JavaScript
-
-- How to setup Open AI API
-- Build a PDF chatbot
-- Learn to use AI tools from Langchain
-- Automate Social Media Content generation
-- Deploying a Langchain app for FREE
-
-Each topic has code examples and exercises to help you learn!
 
 ## Deploy on Vercel
 
