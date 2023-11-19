@@ -37,8 +37,8 @@ const Streaming = () => {
       if (source) {
         source.close();
       }
-      // create new eventsource
 
+      // create new eventsource
       const newSource = new EventSource('/api/streaming');
 
       setSource(newSource);
@@ -58,7 +58,15 @@ const Streaming = () => {
   };
 
   // Clean up the EventSource on component unmount
-  //   add code
+  useEffect(() => {
+    // stuff is gonna happen
+    return () => {
+      if (source) {
+        source.close();
+      }
+    };
+  }, [source]);
+
   return (
     <>
       <Title emoji="💭" headingText="Streaming" />
