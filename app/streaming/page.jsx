@@ -1,20 +1,22 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import PageHeader from "../components/PageHeader";
-import PromptBox from "../components/PromptBox";
-import ResultStreaming from "../components/ResultStreaming";
-import Title from "../components/Title";
-import TwoColumnLayout from "app/components/TwoColumnLayout";
+'use client';
+import React, { useState, useEffect } from 'react';
+import PageHeader from '../components/PageHeader';
+import PromptBox from '../components/PromptBox';
+import ResultStreaming from '../components/ResultStreaming';
+import Title from '../components/Title';
+import TwoColumnLayout from 'app/components/TwoColumnLayout';
 
 const Streaming = () => {
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState('');
   const [error, setError] = useState(null);
-  const [data, setData] = useState("");
-  //   add code
+  const [data, setData] = useState('');
+  const [source, setSource] = useState(null);
 
+  // helper function to sanitize
+  // replaces new line characters & add line breaks so that we're not getting 1 long response
+  // replace 'back ticks' & add new line, replace 'quotes' with empty string
   const processToken = (token) => {
-    // add code
-    return;
+    return token.replace(/\\n/g, '\n').replace(/\"/g, '');
   };
 
   const handlePromptChange = (e) => {
@@ -23,7 +25,32 @@ const Streaming = () => {
 
   const handleSubmit = async () => {
     try {
-      //   add code
+      console.log(`sending ${prompt}`);
+      await fetch('/api/streaming', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ input: prompt }),
+      });
+      // close existing sources
+      if (source) {
+        source.close();
+      }
+      // create new eventsource
+
+      const newSource = new EventSource('/api/streaming');
+
+      setSource(newSource);
+
+      newSource.addEventListener('newToken', (event) => {
+        const token = processToken(event.data);
+        setData((prevData) => prevData + token);
+      });
+
+      newSource.addEventListener('end', () => {
+        newSource.close();
+      });
     } catch (err) {
       console.error(err);
       setError(error);
@@ -52,7 +79,7 @@ const Streaming = () => {
               prompt={prompt}
               handlePromptChange={handlePromptChange}
               handleSubmit={handleSubmit}
-              placeHolderText={"Enter your name and city"}
+              placeHolderText={'Enter your name and city'}
               error={error}
               pngFile="pdf"
             />

@@ -1,5 +1,5 @@
-import React from "react";
-import { sourceCodePro } from "../styles/fonts";
+import React from 'react';
+import { sourceCodePro } from '../styles/fonts';
 
 const PromptBox = ({
   prompt,
@@ -12,7 +12,7 @@ const PromptBox = ({
   labelText,
 }) => {
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleSubmit();
     }
   };
@@ -30,7 +30,7 @@ const PromptBox = ({
           value={prompt}
           onChange={handlePromptChange}
           onKeyDown={handleKeyDown}
-          placeholder={placeHolderText || "Enter your prompt"}
+          placeholder={placeHolderText || 'Enter your prompt'}
           className="w-full mr-4 py-2 px-4 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded shadow"
         />
 
@@ -39,11 +39,11 @@ const PromptBox = ({
             onClick={handleSubmit}
             className={`py-6 px-6 bg-white shadow text-gray-900 font-semibold rounded-full hover:shadow-xl transition-colors duration-200 uppercase ${sourceCodePro.className}`}
           >
-            {buttonText || "Enter"}
+            {buttonText || 'Enter'}
           </button>
         )}
       </div>
-      <p className={`text-red-500 ${error ? "block" : "hidden"}`}>{error}</p>
+      <p className={`text-red-500 ${error ? 'block' : 'hidden'}`}>{error}</p>
     </>
   );
 };
